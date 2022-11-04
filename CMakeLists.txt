@@ -9,8 +9,14 @@ add_subdirectory(third_party/userver)
 
 # Common sources
 add_library(${PROJECT_NAME}_objs OBJECT
-    src/hello.hpp
-    src/hello.cpp
+		src/hello.hpp
+		src/hello.cpp
+		src/components/balancer.hpp
+		src/components/balancer.cpp
+		src/models/Host.hpp
+		src/models/Host.cpp
+		src/utils/http/answers.hpp
+		src/utils/random.hpp
 )
 target_link_libraries(${PROJECT_NAME}_objs PUBLIC userver-core)
 

@@ -21,7 +21,18 @@ services:
           - .:/service_template:rw
           - ./third_party/userver/tools/docker:/tools:ro
         ports:
-          - 8080:8080
+          - "8000:8080"
         working_dir: /service_template
+        depends_on:
+          - "tokenizer"
+          - "tokenizer_replica"
         entrypoint:
           - /tools/run_as_user.sh
+    tokenizer:
+        image: harand/tokenizer
+        ports:
+          - "7000:8000"
+    tokenizer_replica:
+        image: harand/tokenizer
+        ports:
+          - "9000:8000"    
